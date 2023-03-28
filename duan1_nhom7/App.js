@@ -1,13 +1,9 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
+import BottomTabNavigation from './navigation/BottomTabNavigation';
 
 export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Xin chào! Bạn Nghinh</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+  return <BottomTabNavigation/>
 }
 
 const styles = StyleSheet.create({
