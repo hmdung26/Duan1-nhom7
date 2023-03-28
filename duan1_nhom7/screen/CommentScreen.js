@@ -1,5 +1,6 @@
-import { View, Text } from "react-native";
-import React from "react";
+import { View, Text, StyleSheet, TextInput, TouchableOpacity, Image, FlatList, RefreshControl, SafeAreaView, ScrollView } from "react-native";
+import Icon from 'react-native-vector-icons/MaterialIcons'
+import React, { useState } from 'react';
 
 const CommentScreen = () => {
   const [title, settitle] = useState("");
