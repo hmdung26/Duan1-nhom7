@@ -2,14 +2,14 @@ import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import HomeScreens from '../screens/HomeScreens';
-import Login from '../components/Login';
+
+import Login from '../component/Login';
 import BottomTabNavigator from './BottomTabNavigation';
-import SignUpScreen from '../screens/SignUpScreen';
-import SettingScreen from '../screens/SettingScreen';
-import CommentScreen from '../screens/CommentScreen';
-import PostScreen from '../screens/PostScreen';
-import UpdatePost from '../screens/UpdateScreen';
+import SignUpScreen from '../screen/SignUpScreen';
+import SettingScreen from '../screen/SettingScreen';
+import CommentScreen from '../screen/CommentScreen';
+import PostScreen from '../screen/PostScreen';
+import UpdatePost from '../screen/UpdateScreen';
 
 const Stack = createNativeStackNavigator();
 

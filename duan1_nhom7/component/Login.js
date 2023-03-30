@@ -3,11 +3,23 @@ import React, {useState} from 'react'
 import Icon from 'react-native-vector-icons/FontAwesome'
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useNavigation } from '@react-navigation/native';
-const Login = () => {
+const Login = ({navigation}) => {
     const [username, setusername] = useState("");
     const [password, setpassword] = useState("");
 
-    
+
+    const Sign = () => {
+        // if(username.length == 0){
+        //     alert("Chưa nhập username");
+        //     return;
+        // }
+        // if(password.length == 0){
+        //     alert("Chưa nhập password");
+        //     return;
+        // }
+        navigation.navigate('Home')
+    }
+        
 
 
     const SingUp = () =>{

@@ -8,7 +8,7 @@ import {
   Dimensions,
 } from "react-native";
 import * as React from "react";
-
+import songs from "../music/MusicData";
 
 const { height, width } = Dimensions.get("window");
 const MusicScreen = (props) => {
