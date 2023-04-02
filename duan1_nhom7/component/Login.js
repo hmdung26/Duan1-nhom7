@@ -3,7 +3,7 @@ import React, {useState} from 'react'
 import Icon from 'react-native-vector-icons/FontAwesome'
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useNavigation } from '@react-navigation/native';
-import {getAuth, createUserWithEmailAndPassword, singInWithEmailAndPassword }from 'firebase/auth'
+import {getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword }from 'firebase/auth'
 import {initializeApp} from 'firebase/app'
 import {firebaseConfig} from '../firebase/firebase';
 const Login = ({navigation}) => {
@@ -22,19 +22,24 @@ const Login = ({navigation}) => {
         //     alert("Chưa nhập password");
         //     return;
         // }
-        console.log('Tạo thành công');
-        createUserWithEmailAndPassword(auth, username, password).then(()=>{
-            
-            const user = userCredential.user;
+        console.log('Signed in thành công');
+        signInWithEmailAndPassword(auth, username, password).then((userSignin)=>{
+            console.log('Đăng nhập');
+            const user = userSignin.user;
             console.log(user);
+            navigation.navigate('Home')
+        }).catch(err => {
+            console.log(err);
+            alert("Sai Mật khẩu Hoặc Tài Khoản")
+            
         })
-        navigation.navigate('Home')
+        
     }
         
 
 
     const SingUp = () =>{
-        navigator.navigate('Sign Up');
+        navigation.navigate('SignUp');
     }
     return (
         <View style={styles.tieude}>

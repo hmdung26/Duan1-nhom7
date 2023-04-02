@@ -1,9 +1,14 @@
 import { StyleSheet, Text, View, TextInput, Button, SafeAreaView, TouchableOpacity } from 'react-native'
 import React, { useState } from 'react'
 import { useNavigation } from '@react-navigation/native';
+import {getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword }from 'firebase/auth'
+import {initializeApp} from 'firebase/app'
+import {firebaseConfig} from '../firebase/firebase';
+
 
 const SignUpScreen = () => {
-
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
     const [username, setusername] = useState('');
     const [passwd, setpasswd] = useState('');
     const [email, setemail] = useState('');
@@ -17,24 +22,11 @@ const SignUpScreen = () => {
 
     const SignUp = () => {
 
-        let objUsers = { username: username, passwd: passwd, email: email }
-        let url_signUp = "http://10.24.48.202:3000/tb_users";
-
-        fetch(url_signUp, {
-            method: 'POST',
-            headers: {
-                Accept: 'application/json',
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(objUsers)
+        createUserWithEmailAndPassword(auth, username, passwd).then(()=>{
+            
+            const user = userCredential.user;
+            console.log(user);
         })
-            .then((res) => {
-                if (res.status == 201)
-                    alert("Đăng ký thành công")
-            })
-            .catch((ex) => {
-                console.log(ex);
-            })
         navigation.navigate('Login');
     }
 
