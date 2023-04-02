@@ -3,7 +3,12 @@ import React, {useState} from 'react'
 import Icon from 'react-native-vector-icons/FontAwesome'
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useNavigation } from '@react-navigation/native';
+import {getAuth, createUserWithEmailAndPassword, singInWithEmailAndPassword }from 'firebase/auth'
+import {initializeApp} from 'firebase/app'
+import {firebaseConfig} from '../firebase/firebase';
 const Login = ({navigation}) => {
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
     const [username, setusername] = useState("");
     const [password, setpassword] = useState("");
 
@@ -17,6 +22,12 @@ const Login = ({navigation}) => {
         //     alert("Chưa nhập password");
         //     return;
         // }
+        console.log('Tạo thành công');
+        createUserWithEmailAndPassword(auth, username, password).then(()=>{
+            
+            const user = userCredential.user;
+            console.log(user);
+        })
         navigation.navigate('Home')
     }
         

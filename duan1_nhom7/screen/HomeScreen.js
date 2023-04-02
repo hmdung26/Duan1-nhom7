@@ -186,7 +186,7 @@ const HomeScreen = (props) => {
     <View style={{ backgroundColor: '#E5E7E9', height: 600 }}>
 
       <View style={styles.headers}>
-        <Text style={styles.logo}>TIN TỨC</Text>
+        <Text style={styles.logo}>Danh Sách Sân Bóng</Text>
       </View>
 
       <SafeAreaView>
