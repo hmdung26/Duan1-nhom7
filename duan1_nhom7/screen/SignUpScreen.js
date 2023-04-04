@@ -22,7 +22,7 @@ const SignUpScreen = () => {
 
     const SignUp = () => {
 
-        createUserWithEmailAndPassword(auth, username, passwd).then(()=>{
+        createUserWithEmailAndPassword(auth, email, passwd).then(()=>{
             
             const user = userCredential.user;
             console.log(user);
