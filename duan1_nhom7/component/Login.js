@@ -9,7 +9,7 @@ import {firebaseConfig} from '../firebase/firebase';
 const Login = ({navigation}) => {
     const app = initializeApp(firebaseConfig);
     const auth = getAuth(app);
-    const [username, setusername] = useState("");
+    const [Email, setEmail] = useState("");
     const [password, setpassword] = useState("");
 
 
@@ -23,7 +23,7 @@ const Login = ({navigation}) => {
         //     return;
         // }
         console.log('Signed in thành công');
-        signInWithEmailAndPassword(auth, username, password).then((userSignin)=>{
+        signInWithEmailAndPassword(auth, Email, password).then((userSignin)=>{
             console.log('Đăng nhập');
             const user = userSignin.user;
             console.log(user);
@@ -54,14 +54,14 @@ const Login = ({navigation}) => {
             <View style={styles.body}>
                 <View style={{ margin: 20 }}>
                     <View>
-                        <Text style={{ color: 'black', fontSize: 17, fontWeight:'bold' }}>Username</Text>
+                        <Text style={{ color: 'black', fontSize: 17, fontWeight:'bold' }}>Email</Text>
 
                         <View style={{ flexDirection: 'row', borderBottomColor: 'grey', backgroundColor: '#EBF5FB', marginTop: 5 }}>
                             <View style={{ justifyContent: 'center', alignItems: 'center', padding: 15 }}>
                                 <Icon name='user' size={18} />
                             </View>
                             <View style={{ flex: 1 }}>
-                                <TextInput placeholder={'Nhập username'} style={{ padding: 15, fontSize: 16 }} onChangeText={ (txt) => {setusername(txt)}}/>
+                                <TextInput placeholder={'Nhập Email'} style={{ padding: 15, fontSize: 16 }} onChangeText={ (txt) => {setEmail(txt)}}/>
                             </View>
                         </View>
                     </View>
