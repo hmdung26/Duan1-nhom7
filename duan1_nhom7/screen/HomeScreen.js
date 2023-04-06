@@ -4,10 +4,13 @@ import {FlatList,ScrollView,StyleSheet,Text,View,StatusBar,ActivityIndicator,
     import React, { useState } from 'react';
     import Icon from 'react-native-vector-icons/FontAwesome'
     import { useNavigation } from '@react-navigation/native';
-
+    import {initializeApp} from 'firebase/app'
+    import {firebaseConfig} from '../firebase/firebase';
+    import {Firestore, collection, getDocs, getFirestore} from 'firebase/firestore'
 const HomeScreen = (props) => {
     const navigation = useNavigation();
-
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app)
     const [isLoading, setisLoading] = useState(true);
     const [dssp, setdssp] = useState([]);
     const [reload, setreload] = useState(false);
@@ -47,18 +50,12 @@ const HomeScreen = (props) => {
     });
   
     const getListSP = async () => {
-      let url_data = "http://10.24.48.202:3000/tb_posts";
-  
-      try {
-        const response = await fetch(url_data);
-        const json = await response.json();
-        setdssp(json);
-      } catch (error) {
-        console.error(error);
-      } finally {
-        setisLoading(false);
-      }
-  
+       const getListSans =  await getDocs(collection(db, "listSan")).then(getSan => {
+        getSan.forEach((listSan)=>{
+          setdssp.push({...listSan.data(), id:listSan.id})
+        });
+        console.log(getListSans);
+      })
     }
   
     const renderDs = ({ item }) => {
