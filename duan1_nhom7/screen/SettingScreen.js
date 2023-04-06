@@ -123,6 +123,7 @@ const QuanlyUser = (props) => {
             </View>
 
             <SafeAreaView>
+            <TouchableOpacity onPress={navigation.navigate('Login')}></TouchableOpacity>
                 <ScrollView refreshControl={
                     <RefreshControl refreshing={reloading}
                         onRefresh={reloadData} />
@@ -133,6 +134,7 @@ const QuanlyUser = (props) => {
                     />
                 </ScrollView>
             </SafeAreaView>
+            
             <StatusBar />
         </View>
     )

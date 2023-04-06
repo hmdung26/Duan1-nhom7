@@ -4,11 +4,13 @@ import { useNavigation } from '@react-navigation/native';
 import {getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword }from 'firebase/auth'
 import {initializeApp} from 'firebase/app'
 import {firebaseConfig} from '../firebase/firebase';
+import { Firestore, collection, getDoc, getFirestore } from 'firebase/firestore';
 
 
 const SignUpScreen = () => {
     const app = initializeApp(firebaseConfig);
     const auth = getAuth(app);
+    const dbU = getFirestore(app); 
     const [username, setusername] = useState('');
     const [passwd, setpasswd] = useState('');
     const [email, setemail] = useState('');
@@ -25,6 +27,7 @@ const SignUpScreen = () => {
         createUserWithEmailAndPassword(auth, email, passwd).then(()=>{
             
             const user = userCredential.user;
+            
             console.log(user);
         })
         navigation.navigate('Login');

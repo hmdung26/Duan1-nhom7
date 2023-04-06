@@ -50,11 +50,12 @@ const HomeScreen = (props) => {
     });
   
     const getListSP = async () => {
-       const getListSans =  await getDocs(collection(db, "listSan")).then(getSan => {
+      console.log('get danh sách');
+       getDocs(collection(db, "listSan")).then(getSan => {
         getSan.forEach((listSan)=>{
-          setdssp.push({...listSan.data(), id:listSan.id})
+          dssp.push({...listSan.data(), id:listSan.id})
         });
-        console.log(getListSans);
+        console.log(dssp);
       })
     }
   
@@ -62,25 +63,7 @@ const HomeScreen = (props) => {
   
       const Delete = () => {
   
-        let api_api_del = "http://10.24.48.202:3000/tb_posts/" + item.id;
-        fetch(api_api_del, {
-  
-          method: 'DELETE',
-          headers: {
-            Accept: 'application/json',
-            'Content-Type': 'application/json',
-          },
-  
-        })
-          .then((res) => {
-            if (res.status == 200)
-              alert("Xóa thành công");
-            getData();
-  
-          })
-          .catch((err) => {
-            console.log(err);
-          });
+        
       }
   
       const ShowDialogDelete = () => {
@@ -173,12 +156,12 @@ const HomeScreen = (props) => {
     }
   
     React.useEffect(() => {
-      const unsubscribe = props.navigation.addListener('focus', () => {
+      
         getListSP();
-      });
+      
   
-      return unsubscribe;
-    }, [props.navigation]);
+      
+    }, []);
   return (
     <View style={{ backgroundColor: '#E5E7E9', height: 600 }}>
 
