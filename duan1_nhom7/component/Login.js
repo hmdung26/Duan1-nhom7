@@ -14,15 +14,15 @@ const Login = ({navigation}) => {
 
 
     const Sign = () => {
-        // if(username.length == 0){
-        //     alert("Chưa nhập username");
-        //     return;
-        // }
-        // if(password.length == 0){
-        //     alert("Chưa nhập password");
-        //     return;
-        // }
-        console.log('Signed in thành công');
+        if(Email.length == 0){
+            alert("Chưa nhập Email");
+            return;
+        }
+        if(password.length == 0){
+            alert("Chưa nhập password");
+            return;
+        }
+        
         signInWithEmailAndPassword(auth, Email, password).then((userSignin)=>{
             console.log('Đăng nhập');
             const user = userSignin.user;

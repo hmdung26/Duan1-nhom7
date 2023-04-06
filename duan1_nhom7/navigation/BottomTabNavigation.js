@@ -4,8 +4,9 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Icon from 'react-native-vector-icons/Ionicons'
 import HomeScreen from '../screen/HomeScreen';
-import MusicScreen from '../screen/MusicScreen';
+import MusicScreen from '../screen/ThongKeScreen';
 import QuanlyUser from '../screen/SettingScreen';
+import ThongKeScreen from '../screen/ThongKeScreen';
 
 const BottomTabNavigation = () => {
     const Tab = createBottomTabNavigator();
@@ -24,8 +25,8 @@ const BottomTabNavigation = () => {
                   : 'home-outline';
               } else if (route.name === 'NewPost') {
                 iconName = focused ? 'ios-newspaper-sharp' : 'newspaper-outline';
-              } else if (route.name === 'Music') {
-                iconName = focused ? 'ios-musical-notes-sharp' : 'musical-notes-outline';
+              } else if (route.name === 'Thống kê') {
+                iconName = focused ? 'bar-chart' : 'bar-chart-outline';
               } else if (route.name === 'Settings') {
                 iconName = focused ? 'ios-settings-sharp' : 'settings-outline';
               }
@@ -38,7 +39,7 @@ const BottomTabNavigation = () => {
         
         >
           <Tab.Screen name="Home" component={HomeScreen} options={{headerShown: false}}/>
-          <Tab.Screen name="Music" component={MusicScreen} options={{headerShown: false}}/>
+          <Tab.Screen name="Thống kê" component={ThongKeScreen} options={{headerShown: false}}/>
           <Tab.Screen name="Settings" component={QuanlyUser} options={{headerShown: false}} />
         </Tab.Navigator>
       

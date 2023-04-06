@@ -11,8 +11,8 @@ import * as React from "react";
 import songs from "../music/MusicData";
 
 const { height, width } = Dimensions.get("window");
-const MusicScreen = (props) => {
-  const renderMusic = ({ item }) => {
+const ThongKeScreen = (props) => {
+  const renderThongKe = ({ item }) => {
     return (
       <View>
         <TouchableOpacity style={styles.container1}>
@@ -36,15 +36,15 @@ const MusicScreen = (props) => {
   return (
     <View style={styles.container}>
       <View style={styles.header}>
-        <Text style={styles.logo}>MUSIC</Text>
+        <Text style={styles.logo}>Thống Kê</Text>
       </View>
 
-      <FlatList data={songs} renderItem={renderMusic} />
+      <FlatList data={songs} renderItem={renderThongKe} />
     </View>
   );
 };
 
-export default MusicScreen;
+export default ThongKeScreen;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
